@@ -1,9 +1,11 @@
-gateway:
-  name: "Video-Gateway-v1"
-  port: 8080
-  signaling_url: "wss://your-domain.com/ws"
-  auth_required: true
-  reputation_threshold: 500 # Integrates with your Deployma credentials
+Deployma credentials
   logging:
     enabled: true
     path: "./logs/video_sessions.log"
+gateway:
+  name: "Video-Gateway-v1"
+  port: 8080
+  auth_enabled: true
+  auth_service: "src/auth/validator"
+  reputation_check: true
+  session_timeout: 3600 # 1 hour
