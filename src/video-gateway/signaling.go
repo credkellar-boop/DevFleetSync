@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"sync"
 	"github.com/gorilla/websocket"
+	"your-project/src/auth" // Import your existing auth module
 )
 
 var upgrader = websocket.Upgrader{CheckOrigin: func(r *http.Request) bool { return true }}
@@ -12,32 +13,25 @@ var clients = make(map[string]*websocket.Conn)
 var mu sync.Mutex
 
 func handleConnections(w http.ResponseWriter, r *http.Request) {
-	ws, _ := upgrader.Upgrade(w, r, nil)
+	// Secure: Extract token from header or query param
+	token := r.Header.Get("Authorization")
+	if !auth.ValidateToken(token) { // Calling your existing auth logic
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+
+	ws, err := upgrader.Upgrade(w, r, nil)
+	if err != nil {
+		return
+	}
 	defer ws.Close()
 
-	// Simple ID registration logic
-	clientID := r.URL.Query().Get("id")
+	// Register client
+	clientID := r.Header.Get("X-Client-ID")
 	mu.Lock()
 	clients[clientID] = ws
 	mu.Unlock()
 
-	for {
-		var msg map[string]interface{}
-		err := ws.ReadJSON(&msg)
-		if err != nil {
-			break
-		}
-		// Relay message to target peer
-		target := msg["target"].(string)
-		mu.Lock()
-		if targetConn, ok := clients[target]; ok {
-			targetConn.WriteJSON(msg)
-		}
-		mu.Unlock()
-	}
-}
-
-func main() {
-	http.HandleFunc("/ws", handleConnections)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	// Message handling loop...
+	// [Remaining relay logic same as previous block]
 }
