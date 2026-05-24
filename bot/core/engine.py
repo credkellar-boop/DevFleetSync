@@ -89,3 +89,10 @@ class DevFleetEngine:
             return "🛑 Core gateway connection offline. Please check back shortly."
 
 social_engine = DevFleetEngine()
+import hashlib
+
+def generate_cid(user_handle, platform):
+    # Creates a unique, immutable Community ID
+    raw_key = f"{user_handle}:{platform}:DevFleet"
+    return hashlib.sha256(raw_key.encode()).hexdigest()[:16]
+    
