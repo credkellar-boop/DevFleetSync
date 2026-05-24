@@ -1,43 +1,33 @@
-# DevFleetSync 🚀
+# Video-Gateway: Real-Time Engagement Engine
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/credkellar-boop/DevFleetSync/ci.yml?branch=main&label=CI%2FCD&style=flat-square)](https://github.com/credkellar-boop/DevFleetSync/actions)
-[![License](https://img.shields.io/github/license/credkellar-boop/DevFleetSync?style=flat-square)](LICENSE)
-[![GitHub contributors](https://img.shields.io/github/contributors/YOUR_USERNAME/DevFleetSync?style=flat-square)](https://github.com/credkellar-boop/DevFleetSync/graphs/contributors)
+[![Build Status](https://github.com/darionkellar/video-gateway/actions/workflows/deploy-gateway.yml/badge.svg)](https://github.com/darionkellar/video-gateway/actions)
+[![Security Audit](https://img.shields.io/badge/security-validated-green.svg)](https://github.com/darionkellar/video-gateway/security)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Reputation-Gated](https://img.shields.io/badge/Access-Deployma-purple.svg)](https://deployma.io)
 
-![Python](https://img.shields.io/badge/python-3.10-blue?style=flat-square&logo=python)
-![Rust](https://img.shields.io/badge/rust-1.75-orange?style=flat-square&logo=rust)
-![Go](https://img.shields.io/badge/go-1.21-cyan?style=flat-square&logo=go)
+## Overview
+**Video-Gateway** is a high-performance WebRTC signaling server and engagement module designed for the *DevFleetSync* ecosystem. It bridges the gap between real-time video conferencing and your automated infrastructure, providing secure, reputation-gated access to video streams.
 
-[![Discord](https://img.shields.io/discord/YOUR_DISCORD_ID?label=Community&style=flat-square&logo=discord)](YOUR_DISCORD_INVITE_LINK)
+## Core Features
+*   **Signaling Engine:** Lightweight Go implementation for P2P WebRTC handshakes.
+*   **Security:** Integrated with `src/auth` for JWT-based session validation.
+*   **Analytics:** Automated JSON session logging for repository reporting.
+*   **Infrastructure:** Fully containerized via `deployma` for seamless integration.
 
+## Reputation & Access
+This module utilizes your **Deployma** credentials. Access is restricted based on reputational credit:
+*   **Required Credit Score:** >500
+*   **Authentication:** Must provide valid bearer token through the websocket header.
 
-Meet DevFleetSync, your ultimate hub for cross-domain tech collaboration. Whether you are into Vibe Coding, Full Stack Development, AI/ML, Web3, or Cybersecurity, this bot connects you with like-minded innovators. Join our fleet to share knowledge, build new projects, and grow together. Drop your specific domain below and let's start syncing today!
+## System Health
+| Service | Status | Last Audit |
+| :--- | :--- | :--- |
+| `video-gateway` | ✅ Active | 2026-05-23 |
+| `go_watchdog` | ✅ Monitoring | 2026-05-23 |
+| `session-logger`| ✅ Logging | 2026-05-23 |
 
-## Quick Start
-1. Clone the repository: `git clone https://github.com/YOUR_USERNAME/DevFleetSync.git`
-2. Check the `CONTRIBUTING.md` file to see how you can add your domain expertise to the bot.
+## Integration
+This module is designed to work in tandem with the *Master-Trading-Fleet* engine. All session metadata is pushed to the `./logs/video_sessions.log` directory for real-time repository health tracking.
 
-DevFleetSync/
-├── .github/
-│   └── workflows/
-│       ├── ci.yml                 # CI/CD pipeline for green check validations
-│       └── release.yml
-├── bot/
-│   ├── core/
-│   │   ├── __init__.py
-│   │   └── engine.py              # Main bot logic and routing
-│   ├── domains/                   # Modules for AI/ML, Web3, Cyber Security, etc.
-│   │   ├── __init__.py
-│   │   ├── ai_ml.py
-│   │   └── web3.py
-│   ├── main.py
-│   └── requirements.txt           # Python dependencies
-├── go_watchdog/
-│   ├── main.go                    # Go-based service monitoring or task queuing
-│   └── go.mod
-├── src/
-│   ├── main.rs                    # Rust backend entry point
-│   └── auth.rs                    # High-performance authentication handling
-├── Cargo.toml                     # Rust dependencies
-├── .gitignore
-└── README.md                      # Primary documentation and status badges
+---
+*Maintained by the DevFleetSync Infrastructure Team.*
