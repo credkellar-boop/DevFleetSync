@@ -1,0 +1,15 @@
+# .github/workflows/deploy-gateway.yml
+name: Deploy Video Gateway
+on:
+  push:
+    paths:
+      - 'src/video-gateway/**'
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and Deploy
+        run: |
+          docker build -t video-gateway:latest ./src/video-gateway
+          docker compose -f deployma/docker-compose.yaml up -d video-gateway
