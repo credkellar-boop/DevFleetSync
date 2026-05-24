@@ -1,37 +1,28 @@
 package main
 
 import (
-	"log"
-	"net/http"
-	"sync"
-	"github.com/gorilla/websocket"
-	"your-project/src/auth" // Import your existing auth module
+	"encoding/json"
+	"os"
+	"time"
 )
 
-var upgrader = websocket.Upgrader{CheckOrigin: func(r *http.Request) bool { return true }}
-var clients = make(map[string]*websocket.Conn)
-var mu sync.Mutex
+type SessionEntry struct {
+	ClientID  string    `json:"client_id"`
+	StartTime time.Time `json:"start_time"`
+	EndTime   time.Time `json:"end_time"`
+	Duration  float64   `json:"duration_minutes"`
+}
 
-func handleConnections(w http.ResponseWriter, r *http.Request) {
-	// Secure: Extract token from header or query param
-	token := r.Header.Get("Authorization")
-	if !auth.ValidateToken(token) { // Calling your existing auth logic
-		http.Error(w, "Unauthorized", http.StatusUnauthorized)
-		return
+func LogSession(clientID string, start time.Time, end time.Time) {
+	entry := SessionEntry{
+		ClientID:  clientID,
+		StartTime: start,
+		EndTime:   end,
+		Duration:  end.Sub(start).Minutes(),
 	}
 
-	ws, err := upgrader.Upgrade(w, r, nil)
-	if err != nil {
-		return
-	}
-	defer ws.Close()
-
-	// Register client
-	clientID := r.Header.Get("X-Client-ID")
-	mu.Lock()
-	clients[clientID] = ws
-	mu.Unlock()
-
-	// Message handling loop...
-	// [Remaining relay logic same as previous block]
+	file, _ := os.OpenFile("./logs/video_sessions.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	defer file.Close()
+	
+	json.NewEncoder(file).Encode(entry)
 }
