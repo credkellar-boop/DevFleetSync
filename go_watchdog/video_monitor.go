@@ -1,18 +1,9 @@
-package main
-
-import (
-	"fmt"
-	"net/http"
-	"time"
-)
-
-func monitorGateway(url string) {
-	for {
-		resp, err := http.Get(url + "/_/health") // Custom health endpoint
-		if err != nil || resp.StatusCode != 200 {
-			fmt.Printf("Alert: Video Gateway unstable at %s\n", time.Now().Format(time.RFC3339))
-			// Trigger your notification bridge here (e.g., send to Slack/Discord)
-		}
-		time.Sleep(30 * time.Second)
-	}
+func VerifyLogs() {
+    // Check if the log file is being updated
+    info, err := os.Stat("./logs/video_sessions.log")
+    if err == nil && time.Since(info.ModTime()).Minutes() < 60 {
+        fmt.Println("[STATUS] Video session logging active - Green Check Verified")
+    } else {
+        fmt.Println("[ALERT] Log inactivity detected - Review required")
+    }
 }
