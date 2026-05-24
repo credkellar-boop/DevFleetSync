@@ -1,7 +1,15 @@
 # DevFleetSync 🚀
 
-![CI Status](https://img.shields.io/github/actions/workflow/status/YOUR_USERNAME/DevFleetSync/ci.yml?branch=main&label=Build&style=flat-square)
-![License](https://img.shields.io/github/license/YOUR_USERNAME/DevFleetSync?style=flat-square)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/credkellar-boop/DevFleetSync/ci.yml?branch=main&label=CI%2FCD&style=flat-square)](https://github.com/credkellar-boop/DevFleetSync/actions)
+[![License](https://img.shields.io/github/license/credkellar-boop/DevFleetSync?style=flat-square)](LICENSE)
+[![GitHub contributors](https://img.shields.io/github/contributors/YOUR_USERNAME/DevFleetSync?style=flat-square)](https://github.com/credkellar-boop/DevFleetSync/graphs/contributors)
+
+![Python](https://img.shields.io/badge/python-3.10-blue?style=flat-square&logo=python)
+![Rust](https://img.shields.io/badge/rust-1.75-orange?style=flat-square&logo=rust)
+![Go](https://img.shields.io/badge/go-1.21-cyan?style=flat-square&logo=go)
+
+[![Discord](https://img.shields.io/discord/YOUR_DISCORD_ID?label=Community&style=flat-square&logo=discord)](YOUR_DISCORD_INVITE_LINK)
+
 
 Meet DevFleetSync, your ultimate hub for cross-domain tech collaboration. Whether you are into Vibe Coding, Full Stack Development, AI/ML, Web3, or Cybersecurity, this bot connects you with like-minded innovators. Join our fleet to share knowledge, build new projects, and grow together. Drop your specific domain below and let's start syncing today!
 
