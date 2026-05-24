@@ -22,3 +22,18 @@ class MobilityBridge:
         data = {"provider": provider_id, "id": vehicle_id}
         
         return requests.post(endpoint, headers=self.headers, json=data).json()
+# bot/adapters/mobility_bridge.py
+
+def search_transport(self, lat, lon, transport_type):
+    """
+    transport_type updated categories:
+    - 'ride': Uber, Lyft, Waymo
+    - 'rental': Hertz, Enterprise, Turo
+    - 'car_sharing': Zipcar
+    """
+    endpoint = f"{self.base_url}/search"
+    params = {"lat": lat, "lon": lon, "type": transport_type}
+    
+    # The aggregator will filter specific Zipcar locations nearby
+    response = requests.get(endpoint, headers=self.headers, params=params)
+    return response.json()
