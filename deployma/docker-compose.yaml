@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  video-gateway:
+    build: ./src/video-gateway
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./logs:/root/logs
+    environment:
+      - AUTH_SERVICE_URL=http://auth-service:8000
+    networks:
+      - fleet-network
+
+networks:
+  fleet-network:
+    driver: bridge
