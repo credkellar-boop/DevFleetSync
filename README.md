@@ -1,5 +1,13 @@
-# DevFleetSync
+# DevFleetSync 🚀
+
+![CI Status](https://img.shields.io/github/actions/workflow/status/YOUR_USERNAME/DevFleetSync/ci.yml?branch=main&label=Build&style=flat-square)
+![License](https://img.shields.io/github/license/YOUR_USERNAME/DevFleetSync?style=flat-square)
+
 Meet DevFleetSync, your ultimate hub for cross-domain tech collaboration. Whether you are into Vibe Coding, Full Stack Development, AI/ML, Web3, or Cybersecurity, this bot connects you with like-minded innovators. Join our fleet to share knowledge, build new projects, and grow together. Drop your specific domain below and let's start syncing today!
+
+## Quick Start
+1. Clone the repository: `git clone https://github.com/YOUR_USERNAME/DevFleetSync.git`
+2. Check the `CONTRIBUTING.md` file to see how you can add your domain expertise to the bot.
 
 DevFleetSync/
 ├── .github/
