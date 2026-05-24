@@ -1,0 +1,7 @@
+[package]
+name = "devfleetsync-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Add high-performance data and web3 crates here
